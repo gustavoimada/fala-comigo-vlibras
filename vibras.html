@@ -1,64 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FalaComigo - VLibras</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <meta charset="UTF-8">
+  <title>VLibras</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      overflow: hidden;
+    }
+
+    .container {
+      position: fixed;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    [vw] {
+      pointer-events: auto;
+    }
+
+    [vw-access-button] {
+      transform: scale(2.0);
+    }
+  </style>
 </head>
 <body>
-    <div class="main-container">
-        <div class="content-wrapper">
-            <h1>FalaComigo</h1>
-            <input type="text" id="textoInput" placeholder="Ex: Olá, tudo bem?">
-            <button id="traduzirBtn">Traduzir para Libras</button>
-        </div>
-
-        <div class="vlibras-container">
-            <div vw class="enabled">
-                <div vw-access-button class="active"></div>
-            </div>
-            <div vw-plugin-wrapper>
-                <div class="vw-plugin-top-wrapper"></div>
-            </div>
-        </div>
+  <div class="container">
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
     </div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
 
-    <script>
-        // Inicialização do VLibras
-        const widget = new window.VLibras.Widget('https://vlibras.gov.br/app');
-
-        // Lógica para mostrar/esconder o VLibras e interagir com o texto
-        document.addEventListener('DOMContentLoaded', () => {
-            const textoInput = document.getElementById('textoInput');
-            const traduzirBtn = document.getElementById('traduzirBtn');
-            const vlibrasContainer = document.querySelector('.vlibras-container');
-            const accessButton = document.querySelector('[vw-access-button]');
-
-            // Esconder o container VLibras inicialmente se necessário
-            // vlibrasContainer.style.display = 'none'; // Descomente se quiser escondê-lo e só mostrar com o botão
-
-            traduzirBtn.addEventListener('click', () => {
-                // Aqui você pode enviar o texto para o VLibras, se o plugin tiver uma API para isso
-                // Por exemplo: widget.translate(textoInput.value); (VERIFICAR DOCUMENTAÇÃO DO VLIBRAS)
-
-                // Se você quer apenas ativar o avatar clicando no botão "Traduzir",
-                // e o avatar já está no HTML, a lógica de click pode ser assim:
-                if (accessButton) {
-                    accessButton.click(); // Simula o clique no botão de acesso do VLibras
-                }
-                // vlibrasContainer.style.display = 'block'; // Mostra o VLibras se estava escondido
-            });
-
-            // O seu código original no Swift simula um clique no botão de acesso VLibras 1ms depois.
-            // Isso pode ser útil para garantir que o avatar apareça automaticamente.
-            setTimeout(() => {
-                if (accessButton) {
-                    accessButton.click();
-                }
-            }, 1);
-        });
-    </script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
 </body>
 </html>
