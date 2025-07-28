@@ -1,46 +1,20 @@
-html> 
-        <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-            <style>
-                .container
-                {
-                    position: fixed;
-                    top: 40%;
-                    left: 20%;
-                    transform: translateY(-50%);
-                    display: flex;
-                    gap: 12px;
-                    padding: 12px;
-                    z-index: 9999;
-                }
-                [vw-access-button]
-                {
-                    position: relative;
-                    transform: scale(2);
-                }
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <div vw class="enabled">
-                    <div vw-access-button class="active"></div>
-                </div>
-                <div vw-plugin-wrapper>
-                    <div class="vw-plugin-top-wrapper"></div>
-                </div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>VLibras</title>
+</head>
+<body>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
 
-                    <div>
-                            <p>Teste</p>
-                    </div>
-            </div>
-        
-            <script> const widget = new window.VLibras.Widget('https://vlibras.gov.br/app');
-            setTimeout(() => { const accessButton = document.querySelector('[vw-access-button]');
-        
-            if (accessButton) {
-                accessButton.click(); }
-                }, 1);
-            </script>
-        </body>
-        </html>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+</body>
+</html>
