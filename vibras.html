@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>VLibras</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background: transparent;
+        }
+
+        [vw] {
+            position: fixed !important;
+            top: 30% !important;
+            left: 20% !important;
+            transform: scale(1.3);
+            z-index: 9999;
+        }
+
+        [vw-access-button] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+    </div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+        setTimeout(() => {
+            document.querySelector('[vw-access-button]')?.click();
+        }, 1000);
+    </script>
+</body>
+</html>
