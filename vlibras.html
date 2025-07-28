@@ -1,48 +1,42 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <title>VLibras</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: transparent;
-      overflow: hidden;
-    }
-
-    .container {
-      position: fixed;
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 9999;
-      pointer-events: none;
-    }
-
-    [vw] {
-      pointer-events: auto;
-    }
-
-    [vw-access-button] {
-      transform: scale(2.0);
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div vw class="enabled">
-      <div vw-access-button class="active"></div>
-    </div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
-  </div>
-
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
-</body>
-</html>
+html> 
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+            <style>
+                .container
+                {
+                    position: fixed;
+                    top: 40%;
+                    left: 20%;
+                    transform: translateY(-50%);
+                    display: flex;
+                    gap: 12px;
+                    padding: 12px;
+                    z-index: 9999;
+                }
+                [vw-access-button]
+                {
+                    position: relative;
+                    transform: scale(2);
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div vw class="enabled">
+                    <div vw-access-button class="active"></div>
+                </div>
+                <div vw-plugin-wrapper>
+                    <div class="vw-plugin-top-wrapper"></div>
+                </div>
+            </div>
+        
+            <script> const widget = new window.VLibras.Widget('https://vlibras.gov.br/app');
+            setTimeout(() => { const accessButton = document.querySelector('[vw-access-button]');
+        
+            if (accessButton) {
+                accessButton.click(); }
+                }, 1);
+            </script>
+        </body>
+        </html>
