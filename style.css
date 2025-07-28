@@ -1,0 +1,119 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    display: flex; /* Usar flexbox para o layout principal */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Adapte essas cores para as suas 'azul1' e 'white' */
+    background: linear-gradient(to bottom, #4CAF50 20%, #FFFFFF 80%); /* Exemplo de gradiente, use suas cores */
+    overflow: hidden; /* Para evitar scroll indesejado */
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative; /* Para posicionar o VLibras container relativamente */
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Espaçamento entre os elementos */
+    padding: 20px;
+    width: 90%; /* Largura do conteúdo, ajuste conforme necessário */
+    max-width: 400px; /* Largura máxima */
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2.5em; /* largeTitle */
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px; /* Adicionado para separar do input */
+}
+
+#textoInput {
+    padding: 15px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border: none; /* Remover borda padrão do input */
+    width: 100%;
+    box-sizing: border-box; /* Para padding não aumentar a largura */
+    font-size: 1em;
+}
+
+#traduzirBtn {
+    font-weight: 600; /* semibold */
+    color: white;
+    padding: 15px 30px; /* Aumentei o padding para ficar mais parecido */
+    /* Adapte para sua cor 'azul5' */
+    background-color: #007BFF; /* Exemplo de azul, use sua cor */
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease; /* Efeito hover */
+}
+
+#traduzirBtn:hover {
+    background-color: #0056b3; /* Cor mais escura no hover */
+}
+
+/* Estilos para o container do VLibras */
+.vlibras-container {
+    position: absolute; /* Posicionamento absoluto dentro de .main-container */
+    bottom: 0; /* Alinha na parte inferior */
+    width: 100%; /* Ocupa a largura total para centralização */
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo horizontalmente */
+    padding-bottom: 20px; /* Espaçamento da parte inferior */
+    box-sizing: border-box;
+    pointer-events: none; /* Permite cliques através deste container se o VLibras tiver transparência */
+}
+
+/* Os estilos vw-access-button e container do seu código Swift */
+/* Adaptei para funcionar no contexto HTML/CSS */
+.vlibras-container [vw-access-button] {
+    position: relative; /* Mantém o position relative se o plugin espera isso */
+    transform: scale(2); /* Amplia o botão */
+    transform-origin: center center; /* Garante que a ampliação seja do centro */
+    pointer-events: auto; /* Permite cliques no botão */
+}
+
+/* Removi os estilos 'top', 'left', 'transform' do .container original,
+   pois o flexbox em .vlibras-container já faz a centralização e posicionamento.
+   Se você quiser que o avatar flutue exatamente na posição da sua print,
+   pode ser necessário ajustar 'bottom' e usar 'left' com um valor fixo,
+   ou mais responsivamente com 'calc()'. */
+/* Exemplo de posicionamento como na sua print, assumindo que a parte inferior do avatar é a referência */
+.vlibras-container {
+    position: fixed; /* Fixa na tela */
+    bottom: 20px; /* Distância do fundo, ajuste conforme sua print */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajuste para centralização perfeita */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Alinha o conteúdo à parte inferior do container */
+    gap: 12px;
+    padding: 12px;
+    z-index: 9999;
+    width: auto; /* Permite que o container se ajuste ao conteúdo */
+    height: auto;
+    pointer-events: none; /* Impede que o container intercepte cliques */
+}
+
+/* Certifique-se de que os elementos internos do VLibras também respeitem os ponteiros */
+.vlibras-container .enabled,
+.vlibras-container [vw-plugin-wrapper] {
+    pointer-events: auto; /* Permite interação com os elementos do plugin */
+}
